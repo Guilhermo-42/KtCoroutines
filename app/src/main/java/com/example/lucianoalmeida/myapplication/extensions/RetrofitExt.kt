@@ -8,16 +8,21 @@ import kotlin.coroutines.resume
 
 suspend fun <T> Call<T>.await(): T = suspendCancellableCoroutine { continuation ->
     enqueue(object : Callback<T> {
+
         override fun onResponse(call: Call<T>, response: Response<T>) {
             if (response.isSuccessful) {
-                continuation.resume(response.body()!!)
+                response.body()?.let {
+                    continuation.resume(it)
+                }
             }
         }
 
         override fun onFailure(call: Call<T>, t: Throwable) {
             continuation.resumeWith(Result.failure(t))
         }
+
     })
+
     continuation.invokeOnCancellation {
         this@await.cancel()
     }

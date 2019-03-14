@@ -6,6 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface TeamsServiceRetrofit {
+
     @GET("/")
     fun teams(@Query("conference") conference: String): Call<List<Team>>
+
 }

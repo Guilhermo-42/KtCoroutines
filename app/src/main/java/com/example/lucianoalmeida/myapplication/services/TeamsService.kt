@@ -6,17 +6,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class TeamsService {
 
-    val retrofit = Retrofit.Builder()
-        .baseUrl("http://nba-teams-3306.getsandbox.com")
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("http://nba-retrieveTeams-3306.getsandbox.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    var retrofitService: TeamsServiceRetrofit
+
+    private var retrofitService: TeamsServiceRetrofit
 
     init {
         retrofitService = retrofit.create(TeamsServiceRetrofit::class.java)
     }
 
-    suspend fun teams(conference: String) = retrofitService.teams(conference).await()
+    suspend fun retrieveTeams(conference: String) = retrofitService.teams(conference).await()
+
 }
-
-
