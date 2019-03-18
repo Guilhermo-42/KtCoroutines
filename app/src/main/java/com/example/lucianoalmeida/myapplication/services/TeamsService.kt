@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class TeamsService {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://nba-retrieveTeams-3306.getsandbox.com")
+        .baseUrl("https://nba-teams-3306.getsandbox.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

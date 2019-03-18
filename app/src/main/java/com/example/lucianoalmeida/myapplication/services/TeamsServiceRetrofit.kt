@@ -1,6 +1,7 @@
 package com.example.lucianoalmeida.myapplication.services
 
 import com.example.lucianoalmeida.myapplication.model.Team
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
